@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Swiper Card Potrait</title>
+
+<!-- Swiper CSS -->
+<link rel="stylesheet" href="https://unpkg.com/swiper/swiper-bundle.min.css">
+
+<style>
+body {
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background-color: #fcff9d;
+}
+
+.swiper-container {
+    width: 100%;
+    height: 520px;
+    margin: 40px auto;
+}
+
+.swiper-slide {
+    width: 295px;
+    height: 390px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card {
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border-radius: 14px;
+    box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+    overflow: hidden;
+    transition: transform 0.3s ease;
+}
+
+.card:hover {
+    transform: scale(1.05);
+}
+
+.card img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;        /* FOTO TIDAK TERPOTONG */
+    background-color: #ffffff; /* seperti kartu di foto */
+}
+
+
+
+/* sembunyikan audio */
+#background-music {
+    display: none;
+}
+
+/* Tablet */
+@media (max-width: 768px) {
+    .swiper-container {
+        height: 450px;
+    }
+    .swiper-slide {
+        width: 230px;
+        height: 380px;
+    }
+}
+
+/* HP */
+@media (max-width: 480px) {
+    .swiper-container {
+        height: 400px;
+    }
+    .swiper-slide {
+        width: 210px;
+        height: 340px;
+    }
+}
+/* BACKGROUND DECORATION */
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 280px;
+    height: 280px;
+    border-radius: 50%;
+    z-index: -1;
+    filter: blur(40px);
+    opacity: 0.6;
+}
+
+/* bulatan kiri atas */
+body::before {
+    background: #ffb6c1; /* pink */
+    top: -80px;
+    left: -80px;
+}
+
+/* bulatan kanan bawah */
+body::after {
+    background: #add8e6; /* biru muda */
+    bottom: -80px;
+    right: -80px;
+}
+
+/* ===== CUTE BACKGROUND DECORATION ===== */
+.bg-decor {
+    position: fixed;
+    inset: 0;
+    pointer-events: none;
+    z-index: -2;
+}
+
+/* STAR SHAPE */
+.star {
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    clip-path: polygon(
+        50% 0%,
+        61% 35%,
+        98% 35%,
+        68% 57%,
+        79% 91%,
+        50% 70%,
+        21% 91%,
+        32% 57%,
+        2% 35%,
+        39% 35%
+    );
+    animation: sparkle 4s ease-in-out infinite;
+    opacity: 0.9;
+}
+
+/* ukuran kecil */
+.star.small {
+    width: 16px;
+    height: 16px;
+    animation-duration: 3s;
+}
+
+/* BULAN */
+.moon {
+    position: absolute;
+    font-size: 42px;
+    animation: float 6s ease-in-out infinite;
+}
+
+/* HATI */
+.heart {
+    position: absolute;
+    font-size: 20px;
+    animation: float 5s ease-in-out infinite;
+}
+
+/* BINTANG JATUH */
+.shooting-star {
+    position: absolute;
+    width: 80px;
+    height: 2px;
+    background: linear-gradient(90deg, #fff, transparent);
+    animation: shoot 6s linear infinite;
+    opacity: 0.8;
+}
+
+/* ANIMATIONS */
+@keyframes sparkle {
+    0%,100% { transform: scale(1); opacity: .7; }
+    50% { transform: scale(1.5); opacity: 1; }
+}
+
+@keyframes float {
+    0% { transform: translateY(0); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0); }
+}
+
+@keyframes shoot {
+    0% {
+        transform: translateX(-100px) translateY(0);
+        opacity: 0;
+    }
+    10% { opacity: 1; }
+    100% {
+        transform: translateX(400px) translateY(100px);
+        opacity: 0;
+    }
+}
+
+
+</style>
+</head>
+
+<body>
+
+    <div class="bg-decor">
+
+    <!-- BINTANG BESAR -->
+    <span class="star" style="top:10%; left:8%; background:#7ac247"></span>
+    <span class="star" style="top:20%; right:10%; background:#f48798"></span>
+    <span class="star" style="bottom:25%; left:10%; background:#77c7e1"></span>
+
+    <!-- BINTANG KECIL -->
+    <span class="star small" style="top:35%; left:20%; background:#fbe83a"></span>
+    <span class="star small" style="bottom:15%; right:25%; background:#3f3f8e"></span>
+    <span class="star small" style="top:50%; right:15%; background:#f081be"></span>
+
+    <!-- BULAN -->
+    <span class="moon" style="top:8%; right:35%">🌙</span>
+
+    <!-- HATI -->
+    <span class="heart" style="top:45%; left:5%">💖</span>
+    <span class="heart" style="bottom:70%; right:5%">💗</span>
+
+    <!-- BINTANG JATUH -->
+    <span class="shooting-star" style="top:15%; left:0"></span>
+    <span class="shooting-star" style="top:55%; left:0; animation-delay:3s"></span>
+
+</div>
+
+<audio id="background-music" loop preload="auto">
+    <source src="213950659.mp3" type="audio/mpeg">
+</audio>
+
+<div class="swiper-container">
+    <div class="swiper-wrapper">
+
+        <div class="swiper-slide"><div class="card"><img src="1.png"></div></div>
+        <div class="swiper-slide"><div class="card"><img src="2.jpg"></div></div>
+        <div class="swiper-slide"><div class="card"><img src="3.png"></div></div>
+        <div class="swiper-slide"><div class="card"><img src="4.png"></div></div>
+        <div class="swiper-slide"><div class="card"><img src="5.png"></div></div>
+        <div class="swiper-slide"><div class="card"><img src="6.png"></div></div>
+        <div class="swiper-slide"><div class="card"><img src="7.png"></div></div>
+
+    </div>
+
+    <div class="swiper-pagination"></div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+</div>
+
+<script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+<script>
+const audio = document.getElementById('background-music');
+let musicStarted = false;
+
+document.body.addEventListener('click', () => {
+    if (!musicStarted) {
+        audio.play().catch(()=>{});
+        musicStarted = true;
+    }
+}, { once: true });
+
+new Swiper('.swiper-container', {
+    effect: 'coverflow',
+    centeredSlides: true,
+    slidesPerView: 'auto',
+    loop: true,
+
+    allowTouchMove: false, // ❌ disable swipe
+    autoplay: false,       // ❌ matikan auto geser
+
+    coverflowEffect: {
+        rotate: 35,
+        depth: 120,
+        modifier: 1,
+        slideShadows: false,
+    },
+
+    navigation: {
+        nextEl: '.swiper-button-next',
+        prevEl: '.swiper-button-prev',
+    },
+});
+
+</script>
+
+</body>
+</html>
